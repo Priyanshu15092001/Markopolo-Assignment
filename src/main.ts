@@ -15,7 +15,7 @@ async function bootstrap() {
   // Load config service to read .env values
   const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT') || 3000;
-
+  const base_url=configService.get<String>('BASE_URL')
   
 
   // Swagger setup
@@ -30,7 +30,7 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, document); // available at /docs
 
   await app.listen(port);
-  console.log(`🚀 Server running on http://localhost:${port}`);
-  console.log(`📘 Swagger Docs available at http://localhost:${port}/docs`);
+  console.log(`🚀 Server running on ${base_url}`);
+  console.log(`📘 Swagger Docs available at ${base_url}/docs`);
 }
 bootstrap();

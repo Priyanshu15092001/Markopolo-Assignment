@@ -11,9 +11,11 @@ import {
   ApiBadRequestResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { SkipThrottle } from '@nestjs/throttler';
 
 @ApiTags('Auth')
 @Controller('auth')
+@SkipThrottle()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
